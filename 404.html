@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>404 – Page Not Found | Moringa Leaf Disease Detection System</title>
+  <meta name="description" content="The page you are looking for could not be found." />
+  <meta name="robots" content="noindex, nofollow" />
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E🌿%3C/text%3E%3C/svg%3E" />
+  <link rel="stylesheet" href="styles.css" />
+
+  <style>
+    /* ─── 404 Page Specific ─── */
+    body {
+      background: linear-gradient(145deg, #f0faf3 0%, #e8f5ec 50%, #daf0e1 100%);
+    }
+
+    .error-nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      height: 68px;
+      background: rgba(255,255,255,0.92);
+      backdrop-filter: blur(16px);
+      border-bottom: 1px solid var(--gray-200);
+      display: flex;
+      align-items: center;
+      padding: 0 24px;
+      z-index: 100;
+    }
+
+    .error-nav-logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      text-decoration: none;
+    }
+
+    .error-nav-icon {
+      width: 38px; height: 38px;
+      background: linear-gradient(135deg, var(--primary-mid), var(--accent));
+      border-radius: var(--radius-sm);
+      display: grid;
+      place-items: center;
+      font-size: 1.2rem;
+    }
+
+    .error-nav-text {
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: var(--primary-dark);
+    }
+
+    .page-404-wrapper {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 100px 24px 48px;
+      text-align: center;
+    }
+
+    /* Animated moringa leaf */
+    .lost-leaf {
+      font-size: 5rem;
+      animation: float 3.5s ease-in-out infinite;
+      margin-bottom: 8px;
+      display: block;
+    }
+
+    .error-404-code {
+      font-family: var(--font-display);
+      font-size: clamp(6rem, 20vw, 10rem);
+      font-weight: 700;
+      color: var(--light);
+      -webkit-text-stroke: 3px var(--primary-mid);
+      line-height: 1;
+      margin-bottom: 12px;
+      user-select: none;
+    }
+
+    .error-title {
+      font-family: var(--font-display);
+      font-size: clamp(1.6rem, 4vw, 2.4rem);
+      color: var(--primary-dark);
+      margin-bottom: 16px;
+      font-weight: 700;
+    }
+
+    .error-desc {
+      font-size: 1rem;
+      color: var(--text-muted);
+      max-width: 460px;
+      line-height: 1.75;
+      margin-bottom: 40px;
+    }
+
+    .error-actions {
+      display: flex;
+      gap: 14px;
+      justify-content: center;
+      flex-wrap: wrap;
+      margin-bottom: 56px;
+    }
+
+    /* Floating decorative leaves */
+    .leaf-bg {
+      position: fixed;
+      font-size: 2rem;
+      opacity: 0.08;
+      pointer-events: none;
+      animation: floatRandom 6s ease-in-out infinite;
+      user-select: none;
+    }
+
+    @keyframes floatRandom {
+      0%, 100% { transform: translateY(0) rotate(0deg); }
+      33%       { transform: translateY(-18px) rotate(8deg); }
+      66%       { transform: translateY(10px) rotate(-5deg); }
+    }
+
+    .helpful-links {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+      max-width: 540px;
+      width: 100%;
+    }
+
+    .helpful-link {
+      background: white;
+      border-radius: var(--radius-md);
+      padding: 18px 14px;
+      text-align: center;
+      border: 2px solid var(--gray-200);
+      transition: all var(--transition);
+      text-decoration: none;
+      display: block;
+    }
+
+    .helpful-link:hover {
+      border-color: var(--accent);
+      background: var(--lighter);
+      transform: translateY(-4px);
+      box-shadow: var(--shadow-md);
+    }
+
+    .helpful-link-icon { font-size: 1.5rem; margin-bottom: 8px; display: block; }
+    .helpful-link-label { font-size: 0.8rem; font-weight: 600; color: var(--primary-dark); }
+
+    @media (max-width: 480px) {
+      .helpful-links { grid-template-columns: 1fr 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Decorative background leaves -->
+  <span class="leaf-bg" style="top:10%;left:5%;">🌿</span>
+  <span class="leaf-bg" style="top:20%;right:8%;animation-delay:-2s;">🍃</span>
+  <span class="leaf-bg" style="bottom:30%;left:12%;animation-delay:-4s;">🌱</span>
+  <span class="leaf-bg" style="bottom:15%;right:5%;animation-delay:-1s;">🌿</span>
+  <span class="leaf-bg" style="top:60%;left:3%;animation-delay:-3s;">🍃</span>
+
+  <!-- Minimal Nav -->
+  <nav class="error-nav" aria-label="Error page navigation">
+    <a href="index.html" class="error-nav-logo" aria-label="Go to homepage">
+      <div class="error-nav-icon">🌿</div>
+      <div class="error-nav-text">Moringa DDS</div>
+    </a>
+  </nav>
+
+  <!-- 404 Content -->
+  <main class="page-404-wrapper" role="main">
+    <span class="lost-leaf" aria-hidden="true">🍃</span>
+
+    <div class="error-404-code" aria-hidden="true">404</div>
+
+    <h1 class="error-title">Page Not Found</h1>
+
+    <p class="error-desc">
+      Oops! This leaf seems to have wandered off the tree. 🌿<br />
+      The page you're looking for doesn't exist, may have been moved,
+      or you might have typed the address incorrectly.
+    </p>
+
+    <div class="error-actions">
+      <a href="index.html" class="btn btn-primary" id="back-home-btn">
+        🏠 Back to Home
+      </a>
+      <a href="index.html#detection" class="btn btn-outline" id="try-detection-btn">
+        🔬 Try Detection
+      </a>
+    </div>
+
+    <!-- Helpful links -->
+    <div class="helpful-links">
+      <a href="index.html#about" class="helpful-link" id="go-about-link">
+        <span class="helpful-link-icon">📖</span>
+        <span class="helpful-link-label">About Project</span>
+      </a>
+      <a href="index.html#diseases" class="helpful-link" id="go-diseases-link">
+        <span class="helpful-link-icon">🔎</span>
+        <span class="helpful-link-label">Disease Classes</span>
+      </a>
+      <a href="index.html#team" class="helpful-link" id="go-team-link">
+        <span class="helpful-link-icon">👥</span>
+        <span class="helpful-link-label">Our Team</span>
+      </a>
+    </div>
+  </main>
+
+</body>
+</html>

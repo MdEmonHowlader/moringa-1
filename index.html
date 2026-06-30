@@ -1,0 +1,835 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Moringa Leaf Disease Detection System | AI-Powered Plant Health</title>
+  <meta name="description" content="AI-powered Moringa leaf disease classification system using deep learning. Detects Bacterial Leaf Spot, Cercospora Leaf Spot, Healthy Leaf, and Yellow Leaf with 99.67% accuracy." />
+  <meta name="keywords" content="Moringa, Leaf Disease, AI, Deep Learning, Disease Detection, MoringaTriFusionNet" />
+  <meta name="author" content="Md. Emon, Mahmudul Hasan Shihab" />
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E🌿%3C/text%3E%3C/svg%3E" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+<!-- ====================================================
+     NAVIGATION
+     ==================================================== -->
+<nav id="navbar" role="navigation" aria-label="Main Navigation">
+  <div class="container">
+    <div class="nav-inner">
+      <a class="nav-logo" href="#hero" aria-label="Go to homepage">
+        <div class="nav-logo-icon">🌿</div>
+        <div class="nav-logo-text">
+          Moringa DDS
+          <span>Disease Detection System</span>
+        </div>
+      </a>
+
+      <div class="nav-links" id="nav-links-desktop">
+        <a href="#about"       class="nav-link">About</a>
+        <a href="#detection"   class="nav-link">Detection</a>
+        <a href="#diseases"    class="nav-link">Diseases</a>
+        <a href="#model"       class="nav-link">Model</a>
+        <a href="#performance" class="nav-link">Results</a>
+        <a href="#team"        class="nav-link">Team</a>
+        <a href="#detection"   class="nav-link nav-cta" id="nav-try-btn">Try Detection</a>
+      </div>
+
+      <button class="hamburger" id="hamburger" aria-label="Toggle mobile menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+
+    <div class="mobile-menu" id="mobile-menu" role="menu">
+      <a href="#about"       class="nav-link" role="menuitem">About</a>
+      <a href="#detection"   class="nav-link" role="menuitem">Detection</a>
+      <a href="#diseases"    class="nav-link" role="menuitem">Diseases</a>
+      <a href="#model"       class="nav-link" role="menuitem">Model</a>
+      <a href="#performance" class="nav-link" role="menuitem">Results</a>
+      <a href="#team"        class="nav-link" role="menuitem">Team</a>
+    </div>
+  </div>
+</nav>
+
+<!-- ====================================================
+     HERO SECTION
+     ==================================================== -->
+<section id="hero" aria-labelledby="hero-title">
+  <div class="container">
+    <div class="hero-grid">
+      <!-- Left Content -->
+      <div class="hero-content">
+        <div class="hero-badge">AI-Powered Agricultural Intelligence</div>
+
+        <h1 class="hero-title" id="hero-title">
+          Trustworthy Moringa<br />
+          <em>Leaf Disease Detection</em>
+        </h1>
+
+        <p class="hero-subtitle">
+          AI-powered disease classification with confidence, explainability,
+          and uncertainty review — built for accurate, dependable plant health diagnostics.
+        </p>
+
+        <div class="hero-actions">
+          <a href="#detection" class="btn btn-primary" id="hero-try-btn">
+            🔬 Try Detection
+          </a>
+          <a href="#about" class="btn btn-outline" id="hero-learn-btn">
+            Learn More ↓
+          </a>
+        </div>
+
+        <div class="hero-stats">
+          <div class="hero-stat">
+            <div class="hero-stat-value">99.67%</div>
+            <div class="hero-stat-label">Accuracy</div>
+          </div>
+          <div class="hero-stat">
+            <div class="hero-stat-value">4</div>
+            <div class="hero-stat-label">Disease Classes</div>
+          </div>
+          <div class="hero-stat">
+            <div class="hero-stat-value">2000</div>
+            <div class="hero-stat-label">Dataset Images</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Right Visual -->
+      <div class="hero-visual" aria-hidden="true">
+        <div class="hero-leaf-card">
+          <div class="hero-ai-badge">
+            🤖 AI Model<br />Active
+          </div>
+          <div class="hero-acc-badge">
+            ✅ 99.67%<br />Accuracy
+          </div>
+
+          <div class="hero-leaf-illustration">
+            <span style="font-size:5rem;z-index:1;position:relative;">🌿</span>
+            <div style="position:absolute;bottom:16px;left:16px;right:16px;background:rgba(255,255,255,.85);border-radius:10px;padding:10px;font-size:0.78rem;font-weight:600;color:#1b4332;text-align:left;">
+              📊 MoringaTriFusionNet_AU<br />
+              <span style="font-weight:400;color:#4a7c59;">EfficientNetB0 · MobileNetV3 · DenseNet121</span>
+            </div>
+          </div>
+
+          <div class="hero-leaf-badges">
+            <span class="leaf-chip chip-bacterial">Bacterial Leaf Spot</span>
+            <span class="leaf-chip chip-cercospora">Cercospora Leaf Spot</span>
+            <span class="leaf-chip chip-healthy">Healthy Leaf</span>
+            <span class="leaf-chip chip-yellow">Yellow Leaf</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ====================================================
+     ABOUT PROJECT
+     ==================================================== -->
+<section id="about" aria-labelledby="about-title">
+  <div class="container">
+    <div class="about-grid">
+      <!-- Left Text -->
+      <div class="reveal-left">
+        <span class="badge">About the Project</span>
+        <h2 class="section-title" id="about-title">AI-Driven Moringa Health Diagnostics</h2>
+        <p class="section-subtitle" style="margin-bottom:24px;">
+          This project applies state-of-the-art deep learning to automatically classify
+          Moringa leaf diseases from photographs, enabling fast and accurate field diagnostics.
+        </p>
+        <p style="color:var(--text-muted);font-size:0.92rem;line-height:1.75;margin-bottom:28px;">
+          Moringa oleifera — known as the "miracle tree" — is a vital crop in tropical and subtropical
+          regions. Disease outbreaks can devastate yields. Our system provides instant, trustworthy
+          diagnosis directly from leaf images, supporting farmers, agronomists, and researchers.
+        </p>
+
+        <div class="about-features">
+          <div class="about-feature reveal delay-1">
+            <div class="about-feature-icon">🧬</div>
+            <div>
+              <div class="about-feature-title">Deep Learning Classification</div>
+              <div class="about-feature-desc">Tri-branch fusion architecture combining three powerful CNNs for maximum accuracy.</div>
+            </div>
+          </div>
+          <div class="about-feature reveal delay-2">
+            <div class="about-feature-icon">🔍</div>
+            <div>
+              <div class="about-feature-title">Explainable Predictions</div>
+              <div class="about-feature-desc">Integrated Gradients provide visual explanations of model decisions on each leaf.</div>
+            </div>
+          </div>
+          <div class="about-feature reveal delay-3">
+            <div class="about-feature-icon">📊</div>
+            <div>
+              <div class="about-feature-title">Uncertainty Awareness</div>
+              <div class="about-feature-desc">MC-Dropout quantifies prediction uncertainty for safe, reviewable decisions.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Right Visual: Disease Classes -->
+      <div class="about-visual-box reveal-right">
+        <div style="font-size:0.78rem;font-weight:700;text-transform:uppercase;letter-spacing:0.08em;color:var(--text-muted);margin-bottom:16px;">
+          📋 Supported Disease Classes
+        </div>
+        <div class="about-class-pill">
+          <div class="class-dot dot-bacterial"></div>
+          <div class="class-name">Bacterial Leaf Spot</div>
+          <span class="class-tag tag-disease">Disease</span>
+        </div>
+        <div class="about-class-pill">
+          <div class="class-dot dot-cercospora"></div>
+          <div class="class-name">Cercospora Leaf Spot</div>
+          <span class="class-tag tag-disease">Disease</span>
+        </div>
+        <div class="about-class-pill">
+          <div class="class-dot dot-healthy"></div>
+          <div class="class-name">Healthy Leaf</div>
+          <span class="class-tag tag-healthy">Healthy</span>
+        </div>
+        <div class="about-class-pill">
+          <div class="class-dot dot-yellow"></div>
+          <div class="class-name">Yellow Leaf</div>
+          <span class="class-tag tag-disease">Disease</span>
+        </div>
+
+        <div style="margin-top:24px;background:var(--white);border-radius:var(--radius-md);padding:18px;box-shadow:var(--shadow-sm);">
+          <div style="font-size:0.78rem;font-weight:700;color:var(--primary);margin-bottom:10px;">🎯 System Capabilities</div>
+          <div style="display:flex;flex-wrap:wrap;gap:8px;">
+            <span style="background:var(--lighter);color:var(--primary);font-size:0.72rem;font-weight:600;padding:4px 10px;border-radius:100px;">Image Upload</span>
+            <span style="background:var(--lighter);color:var(--primary);font-size:0.72rem;font-weight:600;padding:4px 10px;border-radius:100px;">Disease Prediction</span>
+            <span style="background:var(--lighter);color:var(--primary);font-size:0.72rem;font-weight:600;padding:4px 10px;border-radius:100px;">Confidence Score</span>
+            <span style="background:var(--lighter);color:var(--primary);font-size:0.72rem;font-weight:600;padding:4px 10px;border-radius:100px;">Uncertainty Check</span>
+            <span style="background:var(--lighter);color:var(--primary);font-size:0.72rem;font-weight:600;padding:4px 10px;border-radius:100px;">Expert Review Flag</span>
+            <span style="background:var(--lighter);color:var(--primary);font-size:0.72rem;font-weight:600;padding:4px 10px;border-radius:100px;">Explainable AI</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ====================================================
+     DISEASE DETECTION UPLOAD
+     ==================================================== -->
+<section id="detection" aria-labelledby="detection-title">
+  <div class="container">
+    <div style="text-align:center;">
+      <span class="badge">Disease Detection</span>
+      <h2 class="section-title" id="detection-title" style="margin-inline:auto;">Upload &amp; Detect</h2>
+      <p class="section-subtitle" style="margin-inline:auto;">
+        Upload a Moringa leaf image to instantly classify its health status using our AI model.
+      </p>
+    </div>
+
+    <div class="detection-box reveal">
+      <!-- Upload Zone -->
+      <div class="upload-zone" id="upload-zone" role="button" tabindex="0"
+           aria-label="Upload moringa leaf image" aria-describedby="upload-hint">
+        <span class="upload-icon">🍃</span>
+        <div class="upload-title">Drop your Moringa leaf image here</div>
+        <div class="upload-hint" id="upload-hint">Supports JPG, PNG, WEBP · Max 10MB</div>
+        <label class="upload-btn" for="file-input" id="browse-label">Browse Image</label>
+        <input type="file" id="file-input" accept="image/*" aria-label="Select image file" />
+      </div>
+
+      <!-- Image Preview -->
+      <div class="preview-area" id="preview-area" aria-live="polite">
+        <div class="preview-img-wrap">
+          <img id="preview-img" src="" alt="Uploaded moringa leaf preview" />
+          <button class="remove-preview" id="remove-btn" aria-label="Remove image">✕</button>
+        </div>
+
+        <button class="btn detect-btn" id="detect-btn" type="button"
+                aria-label="Run disease detection on uploaded image">
+          🔬 Detect Disease
+        </button>
+      </div>
+
+      <!-- Loading Spinner -->
+      <div class="detecting-spinner" id="detecting-spinner" aria-live="polite" aria-label="Analyzing image">
+        <div class="spinner-ring"></div>
+        <div style="font-size:0.9rem;color:var(--text-muted);font-weight:500;">
+          Analyzing leaf image with AI model…
+        </div>
+      </div>
+
+      <!-- Result Panel -->
+      <div class="result-panel" id="result-panel" aria-live="polite">
+        <div class="result-header" id="result-header">
+          <div class="result-header-icon" id="result-icon">🍃</div>
+          <div>
+            <div class="result-disease-name" id="result-disease-name">Detected Disease</div>
+            <div class="result-disease-sub" id="result-disease-sub">Model Prediction</div>
+          </div>
+        </div>
+        <div class="result-body">
+          <div class="result-metric">
+            <div class="result-metric-value" id="result-confidence">—</div>
+            <div class="result-metric-label">Confidence Score</div>
+          </div>
+          <div class="result-metric">
+            <div class="result-metric-value" id="result-uncertainty">—</div>
+            <div class="result-metric-label">Uncertainty Level</div>
+          </div>
+          <div class="result-metric">
+            <div class="result-metric-value" id="result-class-prob">—</div>
+            <div class="result-metric-label">Top Class Prob.</div>
+          </div>
+
+          <div class="result-decision">
+            <div class="decision-indicator" id="decision-indicator"></div>
+            <div>
+              <div class="decision-label" id="decision-label">Final Decision</div>
+              <div class="decision-text" id="decision-text"></div>
+            </div>
+          </div>
+
+          <div class="result-explanation">
+            <div class="result-explanation-title">💡 Explanation</div>
+            <div class="result-explanation-text" id="result-explanation-text">
+              The model highlights key visual features such as lesion patterns, discoloration,
+              and texture to arrive at this classification.
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Info Note -->
+      <div style="margin-top:20px;background:var(--lighter);border-radius:var(--radius-md);padding:14px 18px;font-size:0.8rem;color:var(--text-muted);display:flex;align-items:flex-start;gap:10px;">
+        <span>ℹ️</span>
+        <span>
+          <strong>Note:</strong> The detection system is currently running in <strong>demo mode</strong> with
+          simulated predictions. Connect to the <strong>DenseNet121 / MoringaTriFusionNet_AU</strong> backend
+          for live inference using the <code>.h5</code> model weights.
+        </span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ====================================================
+     DISEASE CLASSES
+     ==================================================== -->
+<section id="diseases" aria-labelledby="diseases-title">
+  <div class="container">
+    <span class="badge">Disease Reference</span>
+    <h2 class="section-title" id="diseases-title">Disease Classification Classes</h2>
+    <p class="section-subtitle">
+      Our system identifies four distinct leaf conditions in Moringa plants —
+      three pathological and one healthy reference state.
+    </p>
+
+    <div class="disease-grid">
+      <!-- Bacterial Leaf Spot -->
+      <div class="disease-card bacterial reveal delay-1">
+        <span class="disease-emoji">🔴</span>
+        <div class="disease-name">Bacterial Leaf Spot</div>
+        <div class="disease-desc">
+          Caused by bacterial pathogens such as <em>Pseudomonas</em> spp. Characterized by
+          water-soaked, dark brown angular lesions surrounded by yellow halos on leaf surfaces.
+          Spreads rapidly in humid conditions and can cause severe defoliation.
+        </div>
+        <span class="disease-tag tag-bact">Pathological</span>
+      </div>
+
+      <!-- Cercospora Leaf Spot -->
+      <div class="disease-card cercospora reveal delay-2">
+        <span class="disease-emoji">🟡</span>
+        <div class="disease-name">Cercospora Leaf Spot</div>
+        <div class="disease-desc">
+          A fungal disease caused by <em>Cercospora moringicola</em>. Presents as circular to
+          irregular grayish-white spots with dark purple-brown borders. Often appears during
+          the wet season and affects leaf quality and yield.
+        </div>
+        <span class="disease-tag tag-cerc">Pathological</span>
+      </div>
+
+      <!-- Healthy Leaf -->
+      <div class="disease-card healthy reveal delay-3">
+        <span class="disease-emoji">🌿</span>
+        <div class="disease-name">Healthy Leaf</div>
+        <div class="disease-desc">
+          A normal, unaffected Moringa leaf showing uniform green coloration, intact texture,
+          and no visible lesions or discoloration. Used as the baseline reference class
+          for disease discrimination in the classification model.
+        </div>
+        <span class="disease-tag tag-hlth">Healthy</span>
+      </div>
+
+      <!-- Yellow Leaf -->
+      <div class="disease-card yellow-leaf reveal delay-4">
+        <span class="disease-emoji">🍂</span>
+        <div class="disease-name">Yellow Leaf</div>
+        <div class="disease-desc">
+          Yellowing of leaves (chlorosis) may indicate nutrient deficiencies, overwatering,
+          fungal infection, or natural senescence. Distinguishing this from other diseases
+          is critical for correct treatment decisions.
+        </div>
+        <span class="disease-tag tag-yell">Pathological</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ====================================================
+     MODEL SECTION
+     ==================================================== -->
+<section id="model" aria-labelledby="model-title">
+  <div class="container">
+    <span class="badge">Architecture</span>
+    <h2 class="section-title" id="model-title">Model Used</h2>
+    <p class="section-subtitle">
+      A custom tri-branch fusion network designed for trustworthy, high-accuracy Moringa disease classification.
+    </p>
+
+    <div style="display:grid;grid-template-columns:1.2fr 1fr;gap:32px;align-items:start;">
+      <!-- Model Card -->
+      <div class="model-card reveal-left">
+        <div class="model-name">MoringaTriFusionNet_AU</div>
+        <div class="model-desc">
+          A novel deep learning architecture that fuses three powerful CNN backbones using
+          attention-based feature integration. Each branch extracts complementary feature
+          representations, which are then adaptively fused to form a robust, generalized
+          leaf disease classifier.
+        </div>
+
+        <div class="model-branches">
+          <div class="branch-chip">
+            <div class="branch-chip-name">EfficientNetB0</div>
+            <div class="branch-chip-role">Efficient Feature Extraction</div>
+          </div>
+          <div class="branch-chip">
+            <div class="branch-chip-name">MobileNetV3Large</div>
+            <div class="branch-chip-role">Lightweight Mobile Branch</div>
+          </div>
+          <div class="branch-chip">
+            <div class="branch-chip-name">DenseNet121</div>
+            <div class="branch-chip-role">Dense Connectivity Branch</div>
+          </div>
+        </div>
+
+        <div class="model-baseline">
+          <div class="model-baseline-icon">🏆</div>
+          <div>
+            <div class="model-baseline-title">DenseNet121 — Deployment Baseline</div>
+            <div class="model-baseline-text">
+              DenseNet121 serves as a strong, standalone deployment baseline when a simpler,
+              resource-efficient model is preferred. Its dense connectivity enables excellent
+              feature reuse, achieving competitive accuracy with reduced complexity — ideal
+              for edge or mobile deployment scenarios.
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Fusion Pipeline Visual -->
+      <div class="fusion-visual reveal-right">
+        <div class="fusion-title">🔧 Attention-Based Feature Fusion Pipeline</div>
+
+        <div style="display:flex;flex-direction:column;gap:12px;align-items:center;">
+          <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:8px;width:100%;">
+            <div class="branch-chip" style="text-align:center;padding:14px 8px;">
+              <div style="font-size:1.2rem;margin-bottom:6px;">⚡</div>
+              <div class="branch-chip-name" style="font-size:0.76rem;">EfficientNetB0</div>
+            </div>
+            <div class="branch-chip" style="text-align:center;padding:14px 8px;">
+              <div style="font-size:1.2rem;margin-bottom:6px;">📱</div>
+              <div class="branch-chip-name" style="font-size:0.76rem;">MobileNetV3</div>
+            </div>
+            <div class="branch-chip" style="text-align:center;padding:14px 8px;">
+              <div style="font-size:1.2rem;margin-bottom:6px;">🕸️</div>
+              <div class="branch-chip-name" style="font-size:0.76rem;">DenseNet121</div>
+            </div>
+          </div>
+
+          <div style="color:rgba(255,255,255,.5);font-size:1.5rem;">↓</div>
+
+          <div class="fusion-center" style="width:100%;text-align:center;">
+            🔗 Attention-Based Feature Fusion
+          </div>
+
+          <div style="color:rgba(255,255,255,.5);font-size:1.5rem;">↓</div>
+
+          <div class="branch-chip" style="width:100%;text-align:center;padding:14px;">
+            <div class="branch-chip-name">Classification Head</div>
+            <div class="branch-chip-role">4-Class Softmax Output</div>
+          </div>
+
+          <div style="color:rgba(255,255,255,.5);font-size:1.5rem;">↓</div>
+
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;width:100%;">
+            <div class="branch-chip" style="text-align:center;padding:12px 8px;">
+              <div class="branch-chip-name" style="font-size:0.76rem;">MC-Dropout</div>
+              <div class="branch-chip-role">Uncertainty Estimation</div>
+            </div>
+            <div class="branch-chip" style="text-align:center;padding:12px 8px;">
+              <div class="branch-chip-name" style="font-size:0.76rem;">Integrated Gradients</div>
+              <div class="branch-chip-role">Explainability</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ====================================================
+     TRUSTWORTHY AI
+     ==================================================== -->
+<section id="trustworthy" aria-labelledby="trust-title">
+  <div class="container">
+    <div style="text-align:center;">
+      <span class="badge">Trustworthy AI</span>
+      <h2 class="section-title" id="trust-title" style="margin-inline:auto;">
+        Built for Reliability &amp; Trust
+      </h2>
+      <p class="section-subtitle" style="margin-inline:auto;">
+        Our system goes beyond raw accuracy — embedding transparency, uncertainty awareness,
+        and human oversight at every prediction step.
+      </p>
+    </div>
+
+    <div class="trust-grid">
+      <!-- Explainable AI -->
+      <div class="trust-card reveal delay-1">
+        <div class="trust-icon-wrap">🔍</div>
+        <div class="trust-title">Explainable AI</div>
+        <div class="trust-desc">
+          Using <strong>Integrated Gradients</strong>, the system generates pixel-level
+          attribution maps that visually highlight which parts of the leaf influenced
+          the model's classification decision. This transforms the "black box" into
+          an interpretable diagnostic tool.
+        </div>
+        <span class="trust-tech-tag">Integrated Gradients</span>
+      </div>
+
+      <!-- Uncertainty Estimation -->
+      <div class="trust-card reveal delay-2">
+        <div class="trust-icon-wrap">📊</div>
+        <div class="trust-title">Uncertainty Estimation</div>
+        <div class="trust-desc">
+          <strong>MC-Dropout (Monte Carlo Dropout)</strong> performs multiple stochastic
+          forward passes during inference to estimate prediction variance. A high uncertainty
+          score signals that the model is not confident, prompting a human expert review
+          before any action is taken.
+        </div>
+        <span class="trust-tech-tag">MC-Dropout</span>
+      </div>
+
+      <!-- Reject Option -->
+      <div class="trust-card reveal delay-3">
+        <div class="trust-icon-wrap">🛡️</div>
+        <div class="trust-title">Reject Option — Expert Review</div>
+        <div class="trust-desc">
+          A <strong>Reject Option Classifier</strong> triggers an expert review flag
+          whenever confidence is below threshold or uncertainty is too high. Instead of
+          blindly outputting a wrong label, the system safely escalates ambiguous cases
+          to domain experts — ensuring safe deployment in critical agricultural settings.
+        </div>
+        <span class="trust-tech-tag">Reject Option Classifier</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ====================================================
+     WORKFLOW
+     ==================================================== -->
+<section id="workflow" aria-labelledby="workflow-title">
+  <div class="container">
+    <div style="text-align:center;margin-bottom:48px;">
+      <span class="badge">System Workflow</span>
+      <h2 class="section-title" id="workflow-title" style="margin-inline:auto;">
+        How the Detection Works
+      </h2>
+      <p class="section-subtitle" style="margin-inline:auto;">
+        From image upload to final decision — a transparent, step-by-step diagnostic pipeline.
+      </p>
+    </div>
+
+    <div class="workflow-steps reveal">
+      <div class="workflow-step">
+        <div class="workflow-step-inner">
+          <div class="workflow-step-num">1</div>
+          <div class="workflow-step-icon">📸</div>
+          <div class="workflow-step-label">Input Moringa Image</div>
+        </div>
+      </div>
+      <div class="workflow-arrow">→</div>
+
+      <div class="workflow-step">
+        <div class="workflow-step-inner">
+          <div class="workflow-step-num">2</div>
+          <div class="workflow-step-icon">⚙️</div>
+          <div class="workflow-step-label">Preprocessing</div>
+        </div>
+      </div>
+      <div class="workflow-arrow">→</div>
+
+      <div class="workflow-step">
+        <div class="workflow-step-inner">
+          <div class="workflow-step-num">3</div>
+          <div class="workflow-step-icon">🧠</div>
+          <div class="workflow-step-label">Apply AI Model</div>
+        </div>
+      </div>
+      <div class="workflow-arrow">→</div>
+
+      <div class="workflow-step">
+        <div class="workflow-step-inner">
+          <div class="workflow-step-num">4</div>
+          <div class="workflow-step-icon">🏷️</div>
+          <div class="workflow-step-label">Disease Classification</div>
+        </div>
+      </div>
+      <div class="workflow-arrow">→</div>
+
+      <div class="workflow-step">
+        <div class="workflow-step-inner">
+          <div class="workflow-step-num">5</div>
+          <div class="workflow-step-icon">📊</div>
+          <div class="workflow-step-label">Prediction + Confidence</div>
+        </div>
+      </div>
+      <div class="workflow-arrow">→</div>
+
+      <div class="workflow-step">
+        <div class="workflow-step-inner">
+          <div class="workflow-step-num">6</div>
+          <div class="workflow-step-icon">🔍</div>
+          <div class="workflow-step-label">Explain Disease</div>
+        </div>
+      </div>
+      <div class="workflow-arrow">→</div>
+
+      <div class="workflow-step">
+        <div class="workflow-step-inner">
+          <div class="workflow-step-num">7</div>
+          <div class="workflow-step-icon">⚠️</div>
+          <div class="workflow-step-label">Review Uncertainty</div>
+        </div>
+      </div>
+      <div class="workflow-arrow">→</div>
+
+      <div class="workflow-step">
+        <div class="workflow-step-inner" style="background:linear-gradient(135deg,var(--primary),var(--primary-mid));border-color:var(--primary);">
+          <div class="workflow-step-num" style="background:rgba(255,255,255,.25);">8</div>
+          <div class="workflow-step-icon">✅</div>
+          <div class="workflow-step-label" style="color:var(--white);">Final Decision</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ====================================================
+     PERFORMANCE
+     ==================================================== -->
+<section id="performance" aria-labelledby="performance-title">
+  <div class="container">
+    <div style="text-align:center;">
+      <span class="badge">Model Performance</span>
+      <h2 class="section-title" id="performance-title" style="margin-inline:auto;">
+        Outstanding Results
+      </h2>
+      <p class="section-subtitle" style="margin-inline:auto;">
+        Evaluated on a curated Moringa leaf image dataset with robust cross-validation and standard
+        classification metrics.
+      </p>
+    </div>
+
+    <div class="perf-grid">
+      <div class="perf-card reveal delay-1">
+        <span class="perf-icon">🎯</span>
+        <div class="perf-value">99.67%</div>
+        <div class="perf-label">Overall Accuracy</div>
+      </div>
+      <div class="perf-card reveal delay-2">
+        <span class="perf-icon">📈</span>
+        <div class="perf-value">99.67%</div>
+        <div class="perf-label">Macro F1-Score</div>
+      </div>
+      <div class="perf-card reveal delay-3">
+        <span class="perf-icon">🏷️</span>
+        <div class="perf-value">4</div>
+        <div class="perf-label">Disease Classes</div>
+      </div>
+      <div class="perf-card reveal delay-4">
+        <span class="perf-icon">🖼️</span>
+        <div class="perf-value">2,000</div>
+        <div class="perf-label">Dataset Images</div>
+      </div>
+    </div>
+
+    <!-- Additional metrics bar -->
+    <div class="reveal" style="background:var(--white);border-radius:var(--radius-lg);padding:32px;box-shadow:var(--shadow-sm);">
+      <div style="font-size:0.82rem;font-weight:700;text-transform:uppercase;letter-spacing:0.08em;color:var(--text-muted);margin-bottom:20px;">
+        Per-Class Performance Breakdown
+      </div>
+      <div style="display:grid;gap:14px;">
+        <div class="perf-bar-row" style="display:grid;grid-template-columns:180px 1fr auto;gap:16px;align-items:center;">
+          <span style="font-size:0.87rem;font-weight:600;color:var(--primary-dark);">Bacterial Leaf Spot</span>
+          <div style="background:var(--gray-200);border-radius:100px;height:10px;overflow:hidden;">
+            <div style="width:99%;height:100%;background:linear-gradient(90deg,#ef4444,#fca5a5);border-radius:100px;animation:grow 1s ease;"></div>
+          </div>
+          <span style="font-size:0.82rem;font-weight:700;color:#ef4444;white-space:nowrap;">99.00%</span>
+        </div>
+        <div style="display:grid;grid-template-columns:180px 1fr auto;gap:16px;align-items:center;">
+          <span style="font-size:0.87rem;font-weight:600;color:var(--primary-dark);">Cercospora Leaf Spot</span>
+          <div style="background:var(--gray-200);border-radius:100px;height:10px;overflow:hidden;">
+            <div style="width:99.5%;height:100%;background:linear-gradient(90deg,#f59e0b,#fcd34d);border-radius:100px;"></div>
+          </div>
+          <span style="font-size:0.82rem;font-weight:700;color:#f59e0b;white-space:nowrap;">99.50%</span>
+        </div>
+        <div style="display:grid;grid-template-columns:180px 1fr auto;gap:16px;align-items:center;">
+          <span style="font-size:0.87rem;font-weight:600;color:var(--primary-dark);">Healthy Leaf</span>
+          <div style="background:var(--gray-200);border-radius:100px;height:10px;overflow:hidden;">
+            <div style="width:100%;height:100%;background:linear-gradient(90deg,#22c55e,#86efac);border-radius:100px;"></div>
+          </div>
+          <span style="font-size:0.82rem;font-weight:700;color:#22c55e;white-space:nowrap;">100.00%</span>
+        </div>
+        <div style="display:grid;grid-template-columns:180px 1fr auto;gap:16px;align-items:center;">
+          <span style="font-size:0.87rem;font-weight:600;color:var(--primary-dark);">Yellow Leaf</span>
+          <div style="background:var(--gray-200);border-radius:100px;height:10px;overflow:hidden;">
+            <div style="width:100%;height:100%;background:linear-gradient(90deg,#eab308,#fde047);border-radius:100px;"></div>
+          </div>
+          <span style="font-size:0.82rem;font-weight:700;color:#eab308;white-space:nowrap;">100.00%</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ====================================================
+     TEAM
+     ==================================================== -->
+<section id="team" aria-labelledby="team-title">
+  <div class="container">
+    <div style="text-align:center;">
+      <span class="badge">Our Team</span>
+      <h2 class="section-title" id="team-title" style="margin-inline:auto;">
+        Meet the Researchers
+      </h2>
+      <p class="section-subtitle" style="margin-inline:auto;">
+        This project was developed as a final year design project by passionate students
+        committed to applying AI for agricultural advancement.
+      </p>
+    </div>
+
+    <!-- Team Members -->
+    <div class="team-grid">
+      <div class="team-card reveal delay-1">
+        <div class="team-avatar">ME</div>
+        <div class="team-name">Md. Emon</div>
+        <div class="team-role">Researcher &amp; Lead Developer</div>
+        <span class="team-badge">Final Year Student</span>
+      </div>
+      <div class="team-card reveal delay-2">
+        <div class="team-avatar">MH</div>
+        <div class="team-name">Mahmudul Hasan Shihab</div>
+        <div class="team-role">Researcher &amp; Co-Developer</div>
+        <span class="team-badge">Final Year Student</span>
+      </div>
+    </div>
+
+    <!-- Supervisors -->
+    <div style="text-align:center;margin-bottom:20px;">
+      <div style="font-size:0.8rem;font-weight:700;text-transform:uppercase;letter-spacing:0.08em;color:var(--gray-400);">
+        Academic Guidance
+      </div>
+    </div>
+    <div class="supervisor-grid">
+      <div class="supervisor-card reveal delay-1">
+        <div class="supervisor-icon">👨‍🏫</div>
+        <div class="supervisor-title">Supervisor</div>
+        <div class="supervisor-name">To be announced</div>
+      </div>
+      <div class="supervisor-card reveal delay-2">
+        <div class="supervisor-icon">👨‍💼</div>
+        <div class="supervisor-title">Co-Supervisor</div>
+        <div class="supervisor-name">To be announced</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ====================================================
+     FOOTER
+     ==================================================== -->
+<footer id="footer" role="contentinfo">
+  <div class="container">
+    <div class="footer-inner">
+      <!-- Brand -->
+      <div>
+        <div class="footer-brand-name">🌿 Moringa Leaf Disease Detection System</div>
+        <div class="footer-brand-desc" style="margin-top:10px;">
+          An AI-powered research project for automatic classification of Moringa leaf diseases
+          using deep learning, explainability, and uncertainty estimation techniques.
+        </div>
+        <div style="margin-top:18px;display:flex;gap:8px;flex-wrap:wrap;">
+          <span class="footer-tag">Deep Learning</span>
+          <span class="footer-tag">Computer Vision</span>
+          <span class="footer-tag">Agricultural AI</span>
+          <span class="footer-tag">Trustworthy ML</span>
+        </div>
+      </div>
+
+      <!-- Quick Links -->
+      <div>
+        <div class="footer-col-title">Quick Navigation</div>
+        <ul class="footer-col-list">
+          <li><a href="#hero">Home</a></li>
+          <li><a href="#about">About Project</a></li>
+          <li><a href="#detection">Try Detection</a></li>
+          <li><a href="#diseases">Disease Classes</a></li>
+          <li><a href="#model">Model Architecture</a></li>
+          <li><a href="#trustworthy">Trustworthy AI</a></li>
+          <li><a href="#performance">Results</a></li>
+          <li><a href="#team">Team</a></li>
+        </ul>
+      </div>
+
+      <!-- Project Info -->
+      <div>
+        <div class="footer-col-title">Project Info</div>
+        <div class="footer-col-list">
+          <div class="footer-col-item">📌 Final Year Design Project</div>
+          <div class="footer-col-item">🏫 Dept. of Computer Science &amp; Engineering</div>
+          <div class="footer-col-item">🎓 [Your University Name]</div>
+          <div class="footer-col-item">📅 2025 – 2026</div>
+          <div class="footer-col-item">🤖 Model: MoringaTriFusionNet_AU</div>
+          <div class="footer-col-item">📊 Accuracy: 99.67%</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <div class="footer-copy">
+        © 2026 Moringa Leaf Disease Detection System · Final Year Design Project
+      </div>
+      <div class="footer-tags">
+        <span class="footer-tag">EfficientNetB0</span>
+        <span class="footer-tag">MobileNetV3Large</span>
+        <span class="footer-tag">DenseNet121</span>
+        <span class="footer-tag">MC-Dropout</span>
+        <span class="footer-tag">Integrated Gradients</span>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<!-- Back to Top Button -->
+<button id="back-top" aria-label="Back to top">↑</button>
+
+<!-- ====================================================
+     SCRIPTS
+     ==================================================== -->
+<script src="app.js"></script>
+</body>
+</html>
