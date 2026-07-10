@@ -1333,7 +1333,27 @@ section { padding: 96px 0; }
   background: var(--lighter);
 }
 
-.supervisor-icon { font-size: 2rem; margin-bottom: 10px; }
+.supervisor-icon {
+  width: min(100%, 280px);
+  aspect-ratio: 1;
+  margin: 0 auto 18px;
+  border-radius: 50%;
+  overflow: hidden;
+}
+
+.supervisor-icon a {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.supervisor-icon img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 50%;
+}
 
 .supervisor-title {
   font-size: 0.72rem;
